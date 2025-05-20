@@ -11,7 +11,7 @@ fn main() {
     // let file_path = &args[2];
     // let (query, file_path) = parse_config(&args);
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("Ошибка обработки аргументов: {err}");
+        eprintln!("Ошибка обработки аргументов: {err}");
         process::exit(1);
     });
 
@@ -19,7 +19,7 @@ fn main() {
     println!("Файл: {}", config.file_path);
 
     if let Err(e) = minigrep::run(config) {
-        println!("Ошибка программы: {e}");
+        eprintln!("Ошибка программы: {e}");
         process::exit(1);
     }
 }
